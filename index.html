@@ -20,7 +20,7 @@
   <main class="lg:grid lg:grid-cols-3 p-10 w-full min-h-[500px] ">
     <!-- Texto a (des)encriptar -->
     <div class="col-span-2 h-full p-10 lg:pe-20 justify-between flex-col flex w-full">
-      <textarea name="input" id="input"
+      <textarea name="input" id="input" spellcheck="false"
         class="w-full font-medium text-2xl bg-transparent border-none ring-0 outline-none h-[50%]"
         placeholder="Ingrese el texto aquí"></textarea>
       <div class="flex justify-evenly w-full ">
@@ -45,8 +45,7 @@
       </div>
       <!-- Mensaje de exito -->
       <div class="justify-between flex-col  h-full hidden" id="answer">
-        <div class="w-full text-xl " id="answer_text">
-          Esta función aún no está disponible :(
+        <div class="w-full text-xl break-words text-pretty" id="answer_text">
         </div>
         <div class="flex">
           <button id="copy"
