@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encriptador</title>
+  <link href="./output.css" rel="stylesheet">
+  <script src="./index.js" defer></script>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+</head>
+
+<body class="flex lg:h-screen max-w-screen-xl mx-auto text-[#0a3871]" style="background-color: #f3f5fc;">
+  <header class="lg:flex w-20 p-5 absolute">
+    <nav>
+      <img src="./img/alura.webp" alt="alura logo" class="h-10 object-cover w-10">
+    </nav>
+  </header>
+  <main class="lg:grid lg:grid-cols-3 p-10 w-full min-h-[500px] ">
+    <!-- Texto a (des)encriptar -->
+    <div class="col-span-2 h-full p-10 lg:pe-20 justify-between flex-col flex w-full">
+      <textarea name="input" id="input"
+        class="w-full font-medium text-2xl bg-transparent border-none ring-0 outline-none h-[50%]"
+        placeholder="Ingrese el texto aquí"></textarea>
+      <div class="flex justify-evenly w-full ">
+        <button id="encrypt"
+          class="border-[1px] border-[#0a3871] bg-[#0a3871] text-white rounded-2xl w-36 md:w-64 h-14">Encriptar</button>
+        <button class="border-[1px]   border-[#0a3871] rounded-2xl w-36 md:w-64 h-14" id="decrypt">Desencriptar</button>
+      </div>
+    </div>
+    <!-- Texto (des)encriptado -->
+    <div class="relative col-span-1 h-full p-10 bg-white rounded-2xl shadow-2xl  text-gray-500">
+      <!-- Mensaje de error -->
+      <div class="absolute inset-0 flex flex-col select-none" id="error">
+        <div class="my-auto mx-auto text-center text-gray-600">
+          <img src="./img/not_found.webp" alt="" class="px-10">
+          <span class="font-bold text-xl block">
+            Ningún mensaje fue encontrado
+          </span>
+          <span class="font-normal text-lg">
+            Ingresa el texto que desees encriptar o desencriptar.
+          </span>
+        </div>
+      </div>
+      <!-- Mensaje de exito -->
+      <div class="justify-between flex-col  h-full hidden" id="answer">
+        <div class="w-full text-xl " id="answer_text">
+          Esta función aún no está disponible :(
+        </div>
+        <div class="flex">
+          <button id="copy"
+            class="font-semibold border-[1px] text-[#0a3871]  border-[#0a3871] rounded-2xl w-64 h-14 mx-auto">Copiar</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
