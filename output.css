@@ -644,7 +644,7 @@ video {
 .hidden-text {
   pointer-events: none;
   position: absolute;
-  left: -37px;
+  left: -20px;
   width: 140px;
   opacity: 0;
   transition-duration: 300ms;
