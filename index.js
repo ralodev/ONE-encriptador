@@ -91,12 +91,14 @@ $button_encrypt.addEventListener("click", function () {
   // Si el campo de texto está vacío: mostrar error y ocultar el panel de respuesta
   if ($input_text.value == "") {
     showError("No ingresaste ningún texto");
+    showAlert("Debes ingresar texto", "error");
     show(false);
   } else {
     // Si no está vacío: ocultar el panel de error, encriptar el texto y mostrar el panel de respuesta
     hideError();
     $answer_text.innerHTML = encrypt($input_text.value);
     show(true);
+    showAlert("Se ha encriptado el texto", "success");
   }
 });
 $button_decrypt.addEventListener("click", function () {
@@ -104,16 +106,19 @@ $button_decrypt.addEventListener("click", function () {
   if ($input_text.value == "") {
     show(false);
     showError("No ingresaste ningún texto");
+    showAlert("Debes ingresar texto", "error");
   } else {
     // Si no está vacío: ocultar el panel de error, desencriptar el texto y mostrar el panel de respuesta
     hideError();
     $answer_text.innerHTML = decrypt($input_text.value);
     show(true);
+    showAlert("Se ha desencriptado el texto", "success");
   }
 });
 $button_copy.addEventListener("click", function () {
   // Copiar el texto de la respuesta al portapapeles
   navigator.clipboard.writeText($answer_text.innerHTML);
+  showAlert("¡Texto copiado!", "success");
 });
 $button_switch.addEventListener("click", function () {
   var backup = $input_text.value;
@@ -121,3 +126,24 @@ $button_switch.addEventListener("click", function () {
   $input_text.value = $answer_text.innerHTML;
   $answer_text.innerHTML = backup.toLowerCase();
 });
+
+
+//Alertas (Uso de SweetAlert2)
+const Toast = Swal.mixin({
+  toast: true,
+  position: "bottom-end",
+  customClass: {
+    popup: "!bg-[#fafbff] hover:opacity-50",
+    timerProgressBar: "!bg-[#0a3871]",
+  },
+  showConfirmButton: false,
+  timer: 1200,
+  timerProgressBar: true,
+});
+
+function showAlert(title, icon) {
+  Toast.fire({
+    icon: icon,
+    title: title
+  });
+}

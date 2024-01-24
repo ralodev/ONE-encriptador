@@ -2010,6 +2010,16 @@ video {
   border-style: none;
 }
 
+.\!bg-\[\#0a3871\] {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(10 56 113 / var(--tw-bg-opacity)) !important;
+}
+
+.\!bg-\[\#fafbff\] {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(250 251 255 / var(--tw-bg-opacity)) !important;
+}
+
 .bg-\[rgb\(255\2c 0\2c 0\)\] {
   --tw-bg-opacity: 1;
   background-color: rgb(255 0 0 / var(--tw-bg-opacity));
@@ -2702,6 +2712,10 @@ button:active {
 
 .hover\:font-bold:hover {
   font-weight: 700;
+}
+
+.hover\:opacity-50:hover {
+  opacity: 0.5;
 }
 
 .before\:hover\:text-center:hover::before {
