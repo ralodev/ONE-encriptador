@@ -6,6 +6,7 @@ $input_text = document.getElementById("input");
 $answer_panel = document.getElementById("answer");
 $error_panel = document.getElementById("error");
 $answer = document.getElementById("answer_text");
+$error_text = document.getElementById("errot_text");
 
 const dictionary = {
   "e": "enter",
@@ -44,19 +45,49 @@ function encrypt(text) {
 
 function decrypt(text) {
   var text = text.toLowerCase();
-  var text = text.replace(/enter/g, "e");
-  var text = text.replace(/imes/g, "i");
-  var text = text.replace(/ai/g, "a");
-  var text = text.replace(/ober/g, "o");
   var text = text.replace(/ufat/g, "u");
+  var text = text.replace(/ober/g, "o");
+  var text = text.replace(/ai/g, "a");
+  var text = text.replace(/imes/g, "i");
+  var text = text.replace(/enter/g, "e");
   return text;
+}
+
+function isAlreadyEncrypted(text) {
+  var text = text.toLowerCase();
+  let sensibility = 3;
+  for (var key in dictionary) {
+    if (text.includes(dictionary[key])) {
+      sensibility--;
+    }
+  }
+  if (sensibility <= 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function showError(text) {
+  $error_text.innerHTML = text;
+  $error_text.style.display = "block";
+}
+
+function hideError() {
+  $error_text.style.display = "none";
 }
 
 //Events
 $button_encrypt.addEventListener("click", function () {
   if ($input_text.value == "") {
+    showError("No ingresaste ningún texto");
     show(false);
   } else {
+    // if (isAlreadyEncrypted($input_text.value)) {
+    //   showError("El texto ingresado ya está encriptado");
+    //   return;
+    // }
+    hideError();
     var text = $input_text.value;
     var answer = encrypt(text);
     $answer.innerHTML = answer;
@@ -66,7 +97,13 @@ $button_encrypt.addEventListener("click", function () {
 $button_decrypt.addEventListener("click", function () {
   if ($input_text.value == "") {
     show(false);
+    showError("No ingresaste ningún texto");
   } else {
+    // if (!isAlreadyEncrypted($input_text.value)) {
+    //   showError("El texto ingresado no está encriptado");
+    //   return;
+    // }
+    hideError();
     var text = $input_text.value;
     var answer = decrypt(text);
     $answer.innerHTML = answer;

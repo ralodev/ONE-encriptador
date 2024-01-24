@@ -14,19 +14,25 @@
 <body class="flex lg:h-screen max-w-screen-xl mx-auto text-[#0a3871]" style="background-color: #f3f5fc;">
   <header class="lg:flex w-20 p-5 absolute">
     <nav>
-      <img src="./img/alura.webp" alt="alura logo" class="h-10 object-cover w-10">
+      <a href="https://ralo.dev">
+        <img src="./img/alura.webp" alt="alura logo" class="h-10 object-cover w-10 hover:rotate-12 duration-300">
+      </a>
     </nav>
   </header>
   <main class="lg:grid lg:grid-cols-3 p-10 w-full min-h-[500px] ">
     <!-- Texto a (des)encriptar -->
     <div class="col-span-2 h-full p-10 lg:pe-20 justify-between flex-col flex w-full">
       <textarea name="input" id="input" spellcheck="false"
-        class="w-full font-medium text-2xl bg-transparent border-none ring-0 outline-none h-[50%]"
+        class="w-full font-medium text-2xl bg-transparent border-none ring-0 outline-none h-[50%] focus:bg-[#0000000a] rounded-xl p-3"
         placeholder="Ingrese el texto aquí"></textarea>
-      <div class="flex justify-evenly w-full ">
-        <button id="encrypt"
-          class="border-[1px] border-[#0a3871] bg-[#0a3871] text-white rounded-2xl w-36 md:w-64 h-14">Encriptar</button>
-        <button class="border-[1px]   border-[#0a3871] rounded-2xl w-36 md:w-64 h-14" id="decrypt">Desencriptar</button>
+      <div class="flex flex-col">
+        <span id="errot_text" class="text-red-500 text-center text-lg pb-3 hidden">Error?</span>
+        <div class="flex justify-evenly w-full ">
+          <button id="encrypt" title="Encriptar el texto"
+            class="border-[1px] border-[#0a3871] hover:bg-[#0a3871d0] bg-[#0a3871] text-white rounded-2xl w-36 md:w-64 h-14">Encriptar</button>
+          <button class="border-[1px] hover:bg-[#0000000c] border-[#0a3871] rounded-2xl w-36 md:w-64 h-14" id="decrypt"
+            title="Desencriptar el texto">Desencriptar</button>
+        </div>
       </div>
     </div>
     <!-- Texto (des)encriptado -->
@@ -48,8 +54,8 @@
         <div class="w-full text-xl break-words text-pretty" id="answer_text">
         </div>
         <div class="flex">
-          <button id="copy"
-            class="font-semibold border-[1px] text-[#0a3871]  border-[#0a3871] rounded-2xl w-64 h-14 mx-auto">Copiar</button>
+          <button id="copy" title="Copiar al portapapeles"
+            class="font-semibold border-[1px] text-[#0a3871]  border-[#0a3871] rounded-2xl w-64 h-14 mx-auto hover:bg-[#0000000c]">Copiar</button>
         </div>
       </div>
     </div>
