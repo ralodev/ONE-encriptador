@@ -7,6 +7,7 @@ $answer_panel = document.getElementById("answer");
 $error_panel = document.getElementById("error");
 $answer = document.getElementById("answer_text");
 $error_text = document.getElementById("errot_text");
+$switch_button = document.getElementById("switch_button");
 
 const dictionary = {
   "e": "enter",
@@ -23,9 +24,11 @@ function show(bool) {
   if (bool) {
     $answer_panel.style.display = "flex";
     $error_panel.style.display = "none";
+    $switch_button.style.display = "block";
   } else {
     $answer_panel.style.display = "none";
     $error_panel.style.display = "flex";
+    $switch_button.style.display = "none";
   }
 }
 
@@ -113,4 +116,9 @@ $button_decrypt.addEventListener("click", function () {
 $button_copy.addEventListener("click", function () {
   var text = $answer.innerHTML;
   navigator.clipboard.writeText(text);
+});
+$switch_button.addEventListener("click", function () {
+  var text = $input_text.value;
+  $input_text.value = $answer.innerHTML;
+  $answer.innerHTML = text.toLowerCase();
 });
