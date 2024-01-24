@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+Ahora yo te inspecciono a ti, ¿eh?
+⣰⣾⣿⣿⣿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣆
+⣿⣿⣿⡿⠋⠄⡀⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠋⣉⣉⣉⡉⠙⠻⣿⣿
+⣿⣿⣿⣇⠔⠈⣿⣿⣿⣿⣿⡿⠛⢉⣤⣶⣾⣿⣿⣿⣿⣿⣿⣦⡀⠹
+⣿⣿⠃⠄⢠⣾⣿⣿⣿⠟⢁⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄
+⣿⣿⣿⣿⣿⣿⣿⠟⢁⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷
+⣿⣿⣿⣿⣿⡟⠁⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⠋⢠⣾⣿⣿⣿⣿⣿⣿⡿⠿⠿⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⡿⠁⣰⣿⣿⣿⣿⣿⣿⣿⣿⠗⠄⠄⠄⠄⣿⣿⣿⣿⣿⣿⣿⡟
+⣿⡿⠁⣼⣿⣿⣿⣿⣿⣿⡿⠋⠄⠄⠄⣠⣄⢰⣿⣿⣿⣿⣿⣿⣿⠃
+⡿⠁⣼⣿⣿⣿⣿⣿⣿⣿⡇⠄⢀⡴⠚⢿⣿⣿⣿⣿⣿⣿⣿⣿⡏⢠
+⠃⢰⣿⣿⣿⣿⣿⣿⡿⣿⣿⠴⠋⠄⠄⢸⣿⣿⣿⣿⣿⣿⣿⡟⢀⣾
+⢀⣿⣿⣿⣿⣿⣿⣿⠃⠈⠁⠄⠄⢀⣴⣿⣿⣿⣿⣿⣿⣿⡟⢀⣾⣿
+⢸⣿⣿⣿⣿⣿⣿⣿⠄⠄⠄⠄⢶⣿⣿⣿⣿⣿⣿⣿⣿⠏⢀⣾⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣶⣶⣿⣿⣿⣿⣿⣿⣿⠋⣠⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢁⣼⣿⣿⣿⣿⣿
+⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢁⣴⣿⣿⣿⣿⣿⣿⣿
+⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⢁⣴⣿⣿⣿⣿⠗⠄⠄⣿⣿
+⣆⠈⠻⢿⣿⣿⣿⣿⣿⣿⠿⠛⣉⣤⣾⣿⣿⣿⣿⣿⣇⠠⠺⣷⣿⣿
+⣿⣿⣦⣄⣈⣉⣉⣉⣡⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⠉⠁⣀⣼⣿⣿⣿
+⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣾⣿⣿⡿⠟
+Me gusta tu curiosidad, colega, continúa así 🚀
+ -->
 
 <head>
   <meta charset="UTF-8">
@@ -27,17 +51,28 @@
   <main class="main">
     <!-- Panel principal (de entrada) -->
     <div class="input-panel">
-      <!-- Input de texto -->
+      <!-- Input de texto solo minus -->
       <textarea name="input" id="input" spellcheck="false" class="input-area relative"
-        placeholder="Ingrese el texto aquí"></textarea>
+        style="text-transform: lowercase;" placeholder="Ingrese el texto aquí"></textarea>
       <div class="flex flex-col">
-        <!-- Mensaje de error (cuando haya uno) -->
-        <span id="errot_text" class="error-label"></span>
         <div class="flex justify-evenly w-full ">
           <!-- Botón para encriptar -->
           <button id="encrypt_button" title="Encriptar el texto" class="primary-button">Encriptar</button>
           <!-- Botón para desencriptar -->
           <button class="secondary-button" id="decrypt_button" title="Desencriptar el texto">Desencriptar</button>
+          <!-- Botón para borrar -->
+          <button class="secondary-button !w-14 hover:text-red-500 hover:border-red-500 border-gray-500 text-gray-500"
+            id="delete_button" title="Borrar todo">
+            <!-- Ícono de basura -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="24" height="24" viewBox="0 0 24 24"
+              stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M4 7h16" />
+              <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+              <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+              <path d="M10 12l4 4m0 -4l-4 4" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -56,22 +91,25 @@
         </div>
       </div>
       <!-- Botón para intercambiar contenido -->
-      <div class="absolute top-12 -left-6  ">
-        <button class="switch-button" title="Intercambiar el texto de lugar" id="switch_button">
-          <svg xmlns="http://www.w3.org/2000/svg" class="m-auto" width="24" height="24" viewBox="0 0 24 24"
-            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M21 7l-18 0" />
-            <path d="M18 10l3 -3l-3 -3" />
-            <path d="M6 20l-3 -3l3 -3" />
-            <path d="M3 17l18 0" />
-          </svg>
-        </button>
-      </div>
-      <!-- Resultado de (des)encriptación -->
-      <div class="answer-panel" id="answer_panel">
-        <div class="w-full text-xl break-words" id="answer_text">
+      <div class="relative lg:absolute mx-auto w-0 pointer-events-auto">
+        <div class="absolute lg:top-12 lg:-left-6 -top-6 -translate-x-1/2 z-[10] lg:translate-x-0">
+          <button class="switch-button " title="Intercambiar el texto de lugar" id="switch_button">
+            <!-- Ícono de flecha -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="m-auto lg:rotate-0 rotate-90" width="24" height="24"
+              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M9.586 4l-6.586 6.586a2 2 0 0 0 0 2.828l6.586 6.586a2 2 0 0 0 2.18 .434l.145 -.068a2 2 0 0 0 1.089 -1.78v-2.586h7a2 2 0 0 0 2 -2v-4l-.005 -.15a2 2 0 0 0 -1.995 -1.85l-7 -.001v-2.585a2 2 0 0 0 -3.414 -1.414z"
+                stroke-width="0" fill="currentColor" />
+            </svg>
+          </button>
         </div>
+      </div>
+
+      <!-- Resultado de (des)encriptación -->
+      <div class="answer-panel p-10" id="answer_panel">
+        <div class="w-full text-xl break-words" id="answer_text"></div>
         <div class="flex">
           <!-- Botón para copiar -->
           <button id="copy_button" title="Copiar al portapapeles" class="secondary-button mx-auto">Copiar</button>
