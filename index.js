@@ -13,7 +13,7 @@ const $error_panel = document.getElementById("error_panel");
 const $answer_text = document.getElementById("answer_text");
 const $error_text = document.getElementById("errot_text");
 const $button_switch = document.getElementById("switch_button");
-
+// Diccionario de palabras
 const dictionary = {
   "e": "enter",
   "i": "imes",
@@ -29,44 +29,54 @@ const dictionary = {
 * de la función y entre paréntesis los parámetros que recibe, si no recibe
 * parámetros, se dejan los paréntesis vacíos.
 */
-function show(bool) {
-  if (bool) {
+function show(booleano) {
+  // Si booleano es verdadero (true), mostrar el panel de respuesta y el botón de cambio, y ocultar el panel de error
+  if (booleano) {
     $answer_panel.style.display = "flex";
-    $error_panel.style.display = "none";
     $button_switch.style.display = "block";
+    $error_panel.style.display = "none";
   } else {
+    // Si booleano es falso (false), ocultar el panel de respuesta y el botón de cambio, y mostrar el panel de error
     $answer_panel.style.display = "none";
-    $error_panel.style.display = "flex";
     $button_switch.style.display = "none";
+    $error_panel.style.display = "flex";
   }
 }
+
 function encrypt(text) {
-  var text = text.toLowerCase();
-  var text = text.split("");
-  var text = text.map(function (letter) {
-    if (dictionary[letter]) {
-      return dictionary[letter];
-    } else {
-      return letter;
-    }
+  // Convertir a minúsculas
+  text = text.toLowerCase();
+  // Convertir a un array de caracteres
+  var characters = text.split("");
+  // Mapear cada letra según el diccionario (si no está en el diccionario, se deja igual)
+  var encryptedText = characters.map(function (letter) {
+    return dictionary[letter] || letter;
   });
-  var text = text.join("");
-  return text;
+  // Unir de nuevo el array en una cadena
+  encryptedText = encryptedText.join("");
+  return encryptedText;
 }
+
 function decrypt(text) {
-  var text = text.toLowerCase();
-  var text = text.replace(/ufat/g, "u");
-  var text = text.replace(/ober/g, "o");
-  var text = text.replace(/ai/g, "a");
-  var text = text.replace(/imes/g, "i");
-  var text = text.replace(/enter/g, "e");
-  return text;
+  // Convertir a minúsculas
+  var decryptedText = text.toLowerCase();
+  // Reemplazar cada palabra según el diccionario
+  decryptedText = decryptedText.replace(/ufat/g, "u");
+  decryptedText = decryptedText.replace(/ober/g, "o");
+  decryptedText = decryptedText.replace(/ai/g, "a");
+  decryptedText = decryptedText.replace(/imes/g, "i");
+  decryptedText = decryptedText.replace(/enter/g, "e");
+
+  return decryptedText;
 }
+
 function showError(text) {
+  // Escribir el texto de error y mostrar el elemento
   $error_text.innerHTML = text;
   $error_text.style.display = "block";
 }
 function hideError() {
+  // Ocultar el elemento de error
   $error_text.style.display = "none";
 }
 
@@ -76,36 +86,38 @@ function hideError() {
 * parámetros el nombre del evento y la función que se ejecutará cuando se
 * dispare el evento.
 */
+
 $button_encrypt.addEventListener("click", function () {
+  // Si el campo de texto está vacío: mostrar error y ocultar el panel de respuesta
   if ($input_text.value == "") {
     showError("No ingresaste ningún texto");
     show(false);
   } else {
+    // Si no está vacío: ocultar el panel de error, encriptar el texto y mostrar el panel de respuesta
     hideError();
-    var text = $input_text.value;
-    var answer = encrypt(text);
-    $answer_text.innerHTML = answer;
+    $answer_text.innerHTML = encrypt($input_text.value);
     show(true);
   }
 });
 $button_decrypt.addEventListener("click", function () {
+  // Si el campo de texto está vacío: mostrar error y ocultar el panel de respuesta
   if ($input_text.value == "") {
     show(false);
     showError("No ingresaste ningún texto");
   } else {
+    // Si no está vacío: ocultar el panel de error, desencriptar el texto y mostrar el panel de respuesta
     hideError();
-    var text = $input_text.value;
-    var answer = decrypt(text);
-    $answer_text.innerHTML = answer;
+    $answer_text.innerHTML = decrypt($input_text.value);
     show(true);
   }
 });
 $button_copy.addEventListener("click", function () {
-  var text = $answer_text.innerHTML;
-  navigator.clipboard.writeText(text);
+  // Copiar el texto de la respuesta al portapapeles
+  navigator.clipboard.writeText($answer_text.innerHTML);
 });
 $button_switch.addEventListener("click", function () {
-  var text = $input_text.value;
+  var backup = $input_text.value;
+  // Intercambiar el texto de la respuesta con el del campo de texto
   $input_text.value = $answer_text.innerHTML;
-  $answer_text.innerHTML = text.toLowerCase();
+  $answer_text.innerHTML = backup.toLowerCase();
 });
