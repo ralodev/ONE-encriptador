@@ -608,6 +608,8 @@ video {
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(10 56 113 / var(--tw-border-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(10 56 113 / var(--tw-text-opacity));
 }
 
 .secondary-button:hover {
@@ -2623,6 +2625,43 @@ textarea::-moz-placeholder {
 
 textarea::placeholder {
   color: #0a3871;
+}
+
+button{
+  position: relative;
+}
+
+button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 1rem;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 5px 20px #99c5fc;
+}
+
+.switch-button:after {
+  border-radius: 0.5rem !important;
+}
+
+button:active:after {
+  box-shadow: 0 0 0 0 #99c5fc;
+  position: absolute;
+  border-radius: 1rem;
+  z-index: 1;
+  left: 0;
+  top:0;
+  opacity: 1;
+  transition: 0s;
+}
+
+button:active {
+  top: 1px;
 }
 
 @media (min-width: 640px) {
